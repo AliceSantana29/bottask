@@ -17,10 +17,10 @@ jobs:
         working-directory: bottask/services/${{ matrix.servico }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 22
-      - run: npm test
+          python-version: "3.12"
+      - run: python -m unittest discover -s tests -v
 
   integracao:
     needs: testes
@@ -30,9 +30,6 @@ jobs:
         working-directory: bottask
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
       - name: Subir os serviços
         run: docker compose up -d --build
       - name: Teste de fumaça

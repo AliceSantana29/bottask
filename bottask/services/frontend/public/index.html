@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BotTask</title>
+  <title>BotTask - Quadro de Missões</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <header>
-    <h1>BotTask</h1>
+    <h1>&#9876; BotTask</h1>
     <form id="form-usuario">
-      <input id="usuario" placeholder="Seu nome" maxlength="30" required>
+      <input id="usuario" placeholder="Nome do herói" maxlength="30" required>
       <button type="submit">Entrar</button>
     </form>
   </header>
@@ -26,26 +29,26 @@
     </section>
 
     <section class="card">
-      <h2>Nova missão</h2>
+      <h2>&#128220; Nova missão</h2>
       <form id="form-missao">
-        <input id="titulo" placeholder="Ex: Terminar lista de matemática" maxlength="80" required>
+        <input id="titulo" placeholder="Ex: Derrotar a lista de matemática" maxlength="80" required>
         <select id="dificuldade">
           <option value="facil">Fácil (+10 XP)</option>
           <option value="media">Média (+25 XP)</option>
           <option value="dificil">Difícil (+50 XP)</option>
         </select>
-        <button type="submit">Adicionar</button>
+        <button type="submit">Aceitar</button>
       </form>
     </section>
 
     <section class="card">
-      <h2>Missões</h2>
+      <h2>&#9876; Quadro de missões</h2>
       <ul id="lista-missoes"></ul>
-      <p id="vazio" hidden>Nenhuma missão ainda.</p>
+      <p id="vazio" hidden>Nenhuma missão no quadro. Aceite sua primeira aventura!</p>
     </section>
 
     <section class="card">
-      <h2>Conquistas</h2>
+      <h2>&#127942; Conquistas</h2>
       <ul id="lista-conquistas" class="medalhas"></ul>
     </section>
   </main>

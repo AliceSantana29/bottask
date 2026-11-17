@@ -1,0 +1,8 @@
+{
+  "name": "bottask",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm test --prefix services/missoes && npm test --prefix services/pontuacao && npm test --prefix services/conquistas && npm test --prefix services/frontend"
+  }
+}

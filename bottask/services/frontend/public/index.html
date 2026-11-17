@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BotTask</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>BotTask</h1>
+    <form id="form-usuario">
+      <input id="usuario" placeholder="Seu nome" maxlength="30" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </header>
+
+  <main id="painel" hidden>
+    <section class="card" id="status">
+      <div class="linha">
+        <strong id="nome-jogador"></strong>
+        <span id="nivel"></span>
+      </div>
+      <div class="barra"><div id="barra-xp"></div></div>
+      <small id="texto-xp"></small>
+    </section>
+
+    <section class="card">
+      <h2>Nova missão</h2>
+      <form id="form-missao">
+        <input id="titulo" placeholder="Ex: Terminar lista de matemática" maxlength="80" required>
+        <select id="dificuldade">
+          <option value="facil">Fácil (+10 XP)</option>
+          <option value="media">Média (+25 XP)</option>
+          <option value="dificil">Difícil (+50 XP)</option>
+        </select>
+        <button type="submit">Adicionar</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Missões</h2>
+      <ul id="lista-missoes"></ul>
+      <p id="vazio" hidden>Nenhuma missão ainda.</p>
+    </section>
+
+    <section class="card">
+      <h2>Conquistas</h2>
+      <ul id="lista-conquistas" class="medalhas"></ul>
+    </section>
+  </main>
+
+  <div id="aviso" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

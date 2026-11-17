@@ -1,5 +1,6 @@
 const $ = (id) => document.getElementById(id);
 let usuario = localStorage.getItem('bottask_usuario') || '';
+let nivelAtual = 1;
 let temporizador;
 
 async function chamar(caminho, opcoes) {
@@ -23,7 +24,7 @@ function avisar(texto) {
   aviso.textContent = texto;
   aviso.classList.add('visivel');
   clearTimeout(temporizador);
-  temporizador = setTimeout(() => aviso.classList.remove('visivel'), 3000);
+  temporizador = setTimeout(() => aviso.classList.remove('visivel'), 4500);
 }
 
 function mensagemErro(erro) {
@@ -34,10 +35,11 @@ function mensagemErro(erro) {
 }
 
 function mostrarStatus(dados) {
+  nivelAtual = dados.nivel;
   $('nome-jogador').textContent = dados.usuario;
   $('nivel').textContent = `Nível ${dados.nivel}`;
   $('barra-xp').style.width = `${(dados.xpNoNivel / dados.xpParaProximoNivel) * 100}%`;
-  $('texto-xp').textContent = `${dados.xpNoNivel} / ${dados.xpParaProximoNivel} XP (total: ${dados.xp})`;
+  $('texto-xp').textContent = `${dados.xpNoNivel} / ${dados.xpParaProximoNivel} XP para o próximo nível (total: ${dados.xp})`;
 }
 
 function mostrarMissoes(missoes) {
@@ -62,14 +64,14 @@ function mostrarMissoes(missoes) {
 
     if (!missao.concluida) {
       const concluir = document.createElement('button');
-      concluir.textContent = 'Concluir';
+      concluir.textContent = 'Cumprir';
       concluir.addEventListener('click', () => concluirMissao(missao.id));
       item.append(concluir);
     }
 
     const excluir = document.createElement('button');
     excluir.className = 'secundario';
-    excluir.textContent = 'Excluir';
+    excluir.textContent = 'Abandonar';
     excluir.addEventListener('click', () => excluirMissao(missao.id));
     item.append(excluir);
 
@@ -106,9 +108,15 @@ async function carregar() {
 
 async function concluirMissao(id) {
   try {
+    const nivelAntes = nivelAtual;
     const resultado = await chamar(`/missoes/${id}/concluir`, { method: 'PUT' });
+    const mensagens = [`Missão cumprida! +${resultado.missao.xp} XP`];
+    if (resultado.pontuacao.nivel > nivelAntes) {
+      mensagens.push(`Você subiu para o nível ${resultado.pontuacao.nivel}!`);
+    }
     const novas = resultado.novasConquistas.map((c) => c.nome);
-    avisar(`+${resultado.missao.xp} XP` + (novas.length ? ` | Nova conquista: ${novas.join(', ')}` : ''));
+    if (novas.length) mensagens.push(`Conquista: ${novas.join(', ')}`);
+    avisar(mensagens.join(' | '));
     await carregar();
   } catch (erro) {
     avisar(mensagemErro(erro));

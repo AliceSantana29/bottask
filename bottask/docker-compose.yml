@@ -1,0 +1,54 @@
+services:
+  missoes:
+    build: ./services/missoes
+    environment:
+      PORT: 3001
+      DATA_DIR: /data
+      PONTUACAO_URL: http://pontuacao:3002
+      CONQUISTAS_URL: http://conquistas:3003
+    volumes:
+      - missoes-dados:/data
+    depends_on:
+      - pontuacao
+      - conquistas
+    ports:
+      - "3001:3001"
+
+  pontuacao:
+    build: ./services/pontuacao
+    environment:
+      PORT: 3002
+      DATA_DIR: /data
+    volumes:
+      - pontuacao-dados:/data
+    ports:
+      - "3002:3002"
+
+  conquistas:
+    build: ./services/conquistas
+    environment:
+      PORT: 3003
+      DATA_DIR: /data
+    volumes:
+      - conquistas-dados:/data
+    ports:
+      - "3003:3003"
+
+  frontend:
+    build: ./services/frontend
+    environment:
+      PORT: 8080
+      MISSOES_URL: http://missoes:3001
+      PONTUACAO_URL: http://pontuacao:3002
+      CONQUISTAS_URL: http://conquistas:3003
+    depends_on:
+      - missoes
+      - pontuacao
+      - conquistas
+    ports:
+      - "8080:8080"
+
+volumes:
+  missoes-dados:
+  pontuacao-dados:
+  conquistas-dados:

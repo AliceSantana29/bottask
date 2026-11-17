@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        servico: [missoes, pontuacao, conquistas, frontend]
+    defaults:
+      run:
+        working-directory: services/${{ matrix.servico }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+
+  integracao:
+    needs: testes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Subir os serviços
+        run: docker compose up -d --build
+      - name: Teste de fumaça
+        run: bash scripts/smoke.sh http://localhost:8080
+      - name: Logs em caso de falha
+        if: failure()
+        run: docker compose logs
+      - name: Derrubar os serviços
+        if: always()
+        run: docker compose down -v
+
+  publicar:
+    needs: integracao
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      matrix:
+        servico: [missoes, pontuacao, conquistas, frontend]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Nome do repositório em minúsculas
+        id: repo
+        run: echo "nome=${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: services/${{ matrix.servico }}
+          push: true
+          tags: |
+            ghcr.io/${{ steps.repo.outputs.nome }}/${{ matrix.servico }}:latest
+            ghcr.io/${{ steps.repo.outputs.nome }}/${{ matrix.servico }}:${{ github.sha }}

@@ -10,15 +10,6 @@ Gerenciador de tarefas estilo RPG.
 - **frontend**: página web e entrada única da API
 
 
-## Como o jogo funciona
-
-1. Você digita o nome do seu herói e entra.
-2. Aceita missões, que são as suas tarefas. Cada uma pode ser fácil, média ou difícil.
-3. Ao cumprir uma missão, ganha pontos: 10 na fácil, 25 na média e 50 na difícil.
-4. A cada 100 pontos, você sobe de nível.
-5. Algumas medalhas são liberadas sozinhas: ao cumprir 1, 5 e 10 missões, e ao chegar aos níveis 3 e 5.
-
-
 ## Como abrir o jogo
 
 1. Va em codespace
@@ -33,8 +24,17 @@ docker compose up --build
 4. Na linha da porta **8080**, clique no ícone do globo.
 5. Digite o nome do herói e clique em **Entrar**.
 
-Para zerar o jogo: `docker compose down -v`
+
+## Como o jogo funciona
+
+1. Você digita o nome do seu herói e entra.
+2. Aceita missões, que são as suas tarefas. Cada uma pode ser fácil, média ou difícil.
+3. Ao cumprir uma missão, ganha pontos: 10 na fácil, 25 na média e 50 na difícil.
+4. A cada 100 pontos, você sobe de nível.
+5. Algumas medalhas são liberadas sozinhas: ao cumprir 1, 5 e 10 missões, e ao chegar aos níveis 3 e 5.
+
+
+## Para zerar o jogo: `docker compose down -v`
 
    
-
 <img width="1595" height="764" alt="image" src="https://github.com/user-attachments/assets/b2fa15db-0eb6-4e68-84a1-bdcbd96f3723" />

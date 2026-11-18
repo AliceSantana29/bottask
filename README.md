@@ -11,15 +11,15 @@
 
 ## Como abrir o jogo:
 
-1. Va em codespace
-2. No **Terminal**, embaixo, digite e aperte Enter:
+1. Em codespace, clique em musical space guide.
+2. No Terminal, embaixo, digite e aperte Enter:
 ``
 cd bottask
 docker compose up --build
 ``
-3. Clique na aba **Portas**.
+3. Clique na aba Portas.
 4. Na linha da porta **8080**, clique no ícone do globo.
-5. Digite o seu nome e clique em **Entrar**.
+5. Digite o seu nome e clique em Entrar.
 
 
 ## Como o gerenciador de tarefas funciona:

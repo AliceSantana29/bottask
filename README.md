@@ -24,7 +24,7 @@ docker compose up --build
 
 ## Como o gerenciador de tarefas funciona:
 
-1. Você digita o nome do seu herói e entra.
+1. Você digita o seu nome e entra.
 2. Aceita missões, que são as suas tarefas. Cada uma pode ser fácil, média ou difícil.
 3. Ao cumprir uma missão, ganha pontos: 10 na fácil, 25 na média e 50 na difícil.
 4. A cada 100 pontos, você sobe de nível.

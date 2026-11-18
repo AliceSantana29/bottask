@@ -1,6 +1,6 @@
 # BotTask
 
-Gerenciador de tarefas estilo RPG feito com microsserviços em Python.
+Gerenciador de tarefas estilo RPG.
 
 ## Serviços
 

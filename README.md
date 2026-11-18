@@ -17,3 +17,4 @@ Ao concluir uma missão: frontend, missoes, pontuacao (soma o XP) e conquistas (
 2. `docker compose up --build`
 3. Abrir http://localhost:8080
 
+<img width="1595" height="764" alt="image" src="https://github.com/user-attachments/assets/b2fa15db-0eb6-4e68-84a1-bdcbd96f3723" />

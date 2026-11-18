@@ -11,7 +11,7 @@
 
 ## Como abrir o jogo:
 
-1. Em codespace, clique em musical space guide.
+1. Em codespaces, clique em musical space guide.
 2. No Terminal, embaixo, digite e aperte Enter:
 ``
 cd bottask

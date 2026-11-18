@@ -1,6 +1,5 @@
 # BotTask
 
-Gerenciador de tarefas estilo RPG.
 
 ## Serviços
 
@@ -22,7 +21,7 @@ docker compose up --build
 
 3. Clique na aba **Portas**.
 4. Na linha da porta **8080**, clique no ícone do globo.
-5. Digite o nome do herói e clique em **Entrar**.
+5. Digite o seu nome e clique em **Entrar**.
 
 
 ## Como o jogo funciona

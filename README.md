@@ -1,7 +1,7 @@
 # BotTask
 
 
-## Serviços
+## Serviços:
 
 - **missoes**: cadastro, listagem e conclusão de missões
 - **pontuacao**: XP e nível de cada usuário
@@ -9,7 +9,7 @@
 - **frontend**: página web e entrada única da API
 
 
-## Como abrir o jogo
+## Como abrir o jogo:
 
 1. Va em codespace
 2. No **Terminal**, embaixo, digite e aperte Enter:
@@ -22,7 +22,7 @@ docker compose up --build
 5. Digite o seu nome e clique em **Entrar**.
 
 
-## Como o jogo funciona
+## Como o gerenciador de tarefas funciona:
 
 1. Você digita o nome do seu herói e entra.
 2. Aceita missões, que são as suas tarefas. Cada uma pode ser fácil, média ou difícil.

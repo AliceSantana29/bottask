@@ -24,10 +24,10 @@ Gerenciador de tarefas estilo RPG.
 1. Va em codespace
 2. No **Terminal**, embaixo, digite e aperte Enter:
    
-```
+``
 cd bottask
 docker compose up --build
-```
+``
 
 3. Clique na aba **Portas**.
 4. Na linha da porta **8080**, clique no ícone do globo.

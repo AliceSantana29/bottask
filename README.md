@@ -33,5 +33,6 @@ docker compose up --build
 
 ## Para zerar o jogo: `docker compose down -v`
 
+https://musical-space-guide-r7x5pxg5pxjjc55wq-8080.app.github.dev/
    
 <img width="1595" height="764" alt="image" src="https://github.com/user-attachments/assets/b2fa15db-0eb6-4e68-84a1-bdcbd96f3723" />
